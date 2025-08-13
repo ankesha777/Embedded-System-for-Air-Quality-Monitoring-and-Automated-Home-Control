@@ -19,12 +19,30 @@ An embedded system that monitors indoor air quality and ambient light, then actu
 6. LEDs (alert & lighting) + 220 Ω resistors
 7. Breadboard/PCB, jumper wires, regulated power supply
 
-# System Design Overview
-- Sensors: MQ-2 on A1, LDR divider on A0.
-- Actuators: Fan via motor driver (Enable on PWM pin 5; direction pins on 2 & 3). LEDs on D12 (alert) and D13 (light).
-- Logic: If gasValue>150 → flash alert LEDs; if gasValue>100 → run fan; if ambient light low (ldrValue<1000) → turn on light.
-- Telemetry: Serial prints of gas and LDR readings for debugging and threshold tuning.
+# System Design
+The system is based on a sensor-actuator model:
+1. Gas Detection Subsystem
+- The MQ-2 sensor outputs an analog voltage proportional to gas concentration.
+- The microcontroller reads the voltage via the ADC and compares it with a safety threshold.
+- If the reading exceeds the danger limit, LEDs flash to warn the user, and the fan is activated.
 
+2. Fan Control Subsystem
+- Controlled through a motor driver, the fan runs at a fixed speed when gas concentration exceeds a set value.
+- Direction control pins ensure correct airflow for ventilation.
+
+3. Lighting Control Subsystem
+- An LDR measures light levels using a voltage divider.
+- When the light level falls below a set threshold, the microcontroller activates the lighting LED.
+
+# Working Principle
+The microcontroller continuously samples sensor data:
+1. Gas Level Monitoring
+- If gasValue > 150, gas alert LEDs blink rapidly.
+- If gasValue > 100, the fan turns on automatically.
+2. Lighting Control
+- If ldrValue < 1000, lighting LED turns on; otherwise, it remains off.
+The system operates in real time, responding immediately to environmental changes.
+  
 # Circuit Connections 
 - MQ-2 AO → A1; VCC → 5 V; GND → GND
 - LDR divider → A0 (LDR to 5 V, fixed 10 kΩ to GND; junction → A0)
@@ -36,3 +54,29 @@ An embedded system that monitors indoor air quality and ambient light, then actu
 - Read gas sensor → print → compare with thresholds → alert & fan logic.
 - Read LDR → print → light on/off.
 - Repeat continuously.
+
+# Applications
+- Home safety systems (gas leak detection).
+- Energy-efficient home lighting.
+- Industrial workshop ventilation control.
+- Integration into IoT-based smart homes.
+
+# Advantages
+- Low-cost and easy to assemble.
+- Fully automated — no manual operation required.
+- Scalable — more sensors or relays can be added.
+- Improves safety and energy efficiency.
+
+# Results
+- System flashes alerts when gas spikes above the alert threshold.
+- Fan engages automatically at elevated gas readings and helps reduce the level.
+- Lighting follows ambient brightness, improving energy efficiency.
+
+# Future Enhancements
+- Add Wi-Fi module (ESP8266) for IoT-based remote monitoring.
+- Make fan speed proportional to gas level for efficiency.
+- Replace LEDs with high-power light control via relays.
+- Integrate more sensors (temperature, humidity, CO₂).
+
+# Conclusion
+This project successfully demonstrates a robust embedded system capable of environment monitoring and automated control.It integrates multiple sensors and actuators to create a responsive home safety and automation solution. With minor upgrades, it can be adapted into a complete IoT smart home device.
