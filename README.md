@@ -5,10 +5,10 @@ an embedded system designed for air quality monitoring and automated home contro
 An embedded system that monitors indoor air quality and ambient light, then actuates a ventilation fan and lighting automatically. A gas sensor triggers visual alerts and fan control; an LDR enables light automation. The system demonstrates sensor interfacing, PWM motor control, digital I/O, and real-time decision logic on a microcontroller.
 
 #Objectives
--Detect hazardous gas concentration and alert the user.
--Activate a fan when gas level rises above a threshold.
--Control lighting based on ambient brightness.
--Log sensor data over serial for testing and calibration.
+- Detect hazardous gas concentration and alert the user.
+- Activate a fan when gas level rises above a threshold.
+- Control lighting based on ambient brightness.
+- Log sensor data over serial for testing and calibration.
 
 # Hardware Components
 Microcontroller: Arduino Uno/Nano
