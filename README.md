@@ -1,5 +1,6 @@
 # Embedded-System-for-Air-Quality-Monitoring-and-Automated-Home-Control
 an embedded system designed for air quality monitoring and automated home control uses an MQ-2 gas sensor to detect harmful gases and an LDR to measure ambient light levels. When gas concentration exceeds a safe threshold, the system activates a ventilation fan and flashes alert LEDs.
+ ![image_alt](https://github.com/ankesha777/Embedded-System-for-Air-Quality-Monitoring-and-Automated-Home-Control/blob/7074ff11375857cac156d471f5273b6102a79732/Image.jpg)
 
 # Abstract
 An embedded system that monitors indoor air quality and ambient light, then actuates a ventilation fan and lighting automatically. A gas sensor triggers visual alerts and fan control; an LDR enables light automation. The system demonstrates sensor interfacing, PWM motor control, digital I/O, and real-time decision logic on a microcontroller.
